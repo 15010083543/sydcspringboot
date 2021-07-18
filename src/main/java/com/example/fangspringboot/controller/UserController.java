@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @Author: liupeng
@@ -24,5 +25,13 @@ public class UserController {
     public UserModel getUser(@RequestParam(name="id")Integer id) {
         UserModel userModel = userService.getUser(id);
         return userModel;
+    }
+
+    @RequestMapping("/index")
+    public ModelAndView index(){
+        String userName = "imooc";
+        ModelAndView modelAndView = new ModelAndView("/index.html");
+        modelAndView.addObject("name",userName);
+        return modelAndView;
     }
 }
